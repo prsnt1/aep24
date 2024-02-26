@@ -1,9 +1,14 @@
 package edu.berkeley.aep;
 
-// Understands how to compare measurements in a given unit
+// Understands how to compare measurements in different units
 public class Quantity {
     private final int size;
     private final Unit unit;
+
+    @Override
+    public String toString() {
+        return size + " " + unit;
+    }
 
     public Quantity(int size, Unit unit) {
         this.size = size;
@@ -12,18 +17,13 @@ public class Quantity {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) return true;
+        if (other == this) return true;
         if (!(other instanceof Quantity otherQuantity)) return false;
-        return otherQuantity.unit.convertTo(this.unit, otherQuantity.size) == size;
+        if (!isComparableTo(otherQuantity)) return false;
+        return otherQuantity.unit.convertTo(otherQuantity.size, unit) == size;
     }
 
-    @Override
-    public int hashCode() {
-        return unit.hashCode(size);
-    }
-
-    @Override
-    public String toString() {
-        return size + " " + unit;
+    private boolean isComparableTo(Quantity other) {
+        return unit.isComparableTo(other.unit);
     }
 }
