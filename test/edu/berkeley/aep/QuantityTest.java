@@ -67,4 +67,18 @@ public class QuantityTest {
         Quantity oneOz = new Quantity(1, Unit.OZ);
         assertEquals(new Quantity(12, Unit.TSP), twoTablespoons.add(oneOz));
     }
+
+    @Test
+    public void twoHundredAndTwelveFahrenheitShouldEqual100Celsius() {
+        Quantity twoHundredTwelveF = new Quantity(212, Unit.FAHRENHEIT);
+        Quantity oneHundredC = new Quantity(100, Unit.CELSIUS);
+        assertEquals(twoHundredTwelveF, oneHundredC);
+    }
+
+    @Test
+    public void thirtyTwoFahrenheitShouldEqualZeroCelsius() {
+        Quantity thirtyTwoF = new Quantity(32, Unit.FAHRENHEIT);
+        Quantity zeroC = new Quantity(0, Unit.CELSIUS);
+        assertEquals(thirtyTwoF, zeroC);
+    }
 }
