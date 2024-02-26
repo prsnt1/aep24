@@ -26,4 +26,9 @@ public class Quantity {
     private boolean isComparableTo(Quantity other) {
         return unit.isComparableTo(other.unit);
     }
+
+    public Quantity add(Quantity other) {
+        int otherSize = other.unit.convertTo(other.size, unit);
+        return new Quantity(size + otherSize, unit);
+    }
 }

@@ -55,4 +55,16 @@ public class QuantityTest {
         assertNotEquals(oneFoot, threeTeaspoons);
     }
 
+    @Test
+    public void twoInchesPlusTwoInchesShouldEqualFourInches() {
+        Quantity twoInches = new Quantity(2, Unit.INCHES);
+        assertEquals(new Quantity(4, Unit.INCHES), twoInches.add(twoInches));
+    }
+
+    @Test
+    public void twoTablespoonsPlusOneOzShouldEqualTwelveTeaspoons() {
+        Quantity twoTablespoons = new Quantity(2, Unit.TBSP);
+        Quantity oneOz = new Quantity(1, Unit.OZ);
+        assertEquals(new Quantity(12, Unit.TSP), twoTablespoons.add(oneOz));
+    }
 }
