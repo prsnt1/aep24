@@ -1,6 +1,7 @@
 package edu.berkeley.aep;
 
-public class ScaledQuantity {
+// Understands how to compare scaled measurements in different units
+public class ScaledQuantity implements Bestable {
     protected final int size;
     protected final Unit unit;
 
@@ -24,5 +25,12 @@ public class ScaledQuantity {
 
     private boolean isComparableTo(ScaledQuantity other) {
         return unit.isComparableTo(other.unit);
+    }
+
+    @Override
+    public boolean betterThan(Bestable other) {
+        ScaledQuantity otherQuantity = (ScaledQuantity) other;
+        var otherSize = otherQuantity.unit.convertTo(otherQuantity.size, unit);
+        return size > otherSize;
     }
 }

@@ -1,6 +1,6 @@
 package edu.berkeley.aep;
 
-// Understands how to compare measurements in different units
+// Understands how to compare arithmetic measurements in different units
 public class ArithmeticQuantity extends ScaledQuantity {
 
     public ArithmeticQuantity(int size, Unit unit) {

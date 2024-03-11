@@ -2,8 +2,7 @@ package edu.berkeley.aep;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class QuantityTest {
     @Test
@@ -80,5 +79,12 @@ public class QuantityTest {
         ScaledQuantity thirtyTwoF = new ScaledQuantity(32, Unit.FAHRENHEIT);
         ScaledQuantity zeroC = new ScaledQuantity(0, Unit.CELSIUS);
         assertEquals(thirtyTwoF, zeroC);
+    }
+
+    @Test
+    public void oneOzShouldBeBetterThan3Tsp() {
+        ArithmeticQuantity oneOz = new ArithmeticQuantity(1, Unit.OZ);
+        ArithmeticQuantity threeTsp = new ArithmeticQuantity(3, Unit.TSP);
+        assertTrue(oneOz.betterThan(threeTsp));
     }
 }
